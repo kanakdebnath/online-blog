@@ -99,6 +99,29 @@
               </ul>
             </li>
 
+            <!-- Posts -->
+
+            <li class="menu-item">
+              <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-layout"></i>
+                <div data-i18n="Layouts">Posts</div>
+              </a>
+
+              <ul class="menu-sub">
+                <li class="menu-item">
+                  <a href="add_post.php" class="menu-link">
+                    <div data-i18n="Without menu">Add Post</div>
+                  </a>
+                </li>
+                <li class="menu-item">
+                  <a href="post_list.php" class="menu-link">
+                    <div data-i18n="Without navbar">Manage Posts</div>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+
             <!-- Layouts -->
             <li class="menu-item">
               <a href="javascript:void(0);" class="menu-link menu-toggle">

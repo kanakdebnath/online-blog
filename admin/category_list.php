@@ -81,7 +81,7 @@ $categories = $db->select($query);
                                             </td>
                                         <td><?php echo $result['created_at']; ?></td>
                                         <td>
-                                            <span  class="badge bg-info"><a href="category_edit.php">Edit</a></span> ||
+                                            <span  class="badge bg-info"><a href="edit_category.php?id=<?php echo $result['id'] ?>">Edit</a></span> ||
 
                                             <span  class="badge bg-danger"><a onClick=" return confirm('Are your sure you want to delete?')" href="?delid=<?php echo $result['id'] ?>">Delete</a></span>
 
