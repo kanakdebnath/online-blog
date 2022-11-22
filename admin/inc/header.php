@@ -60,6 +60,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
     <script src="assets/vendor/js/helpers.js"></script>
     <script src="assets/js/config.js"></script>
 
+    <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
+
     
   </head>
 

@@ -10,26 +10,40 @@
 
  if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    $name = $_POST['name'];
-    $status = $_POST['status'];
 
-    $query = "INSERT INTO categories(`name`,`status`) VALUES ('$name','$status')";
+
+    $title = $_POST['title'];
+    $category = $_POST['category'];
+    $details = $_POST['details'];
+    $status = $_POST['status'];
+    $user_id = Session::get('userId');
+
+
+    // phpto upload 
+
+    $filename = $_FILES['photo']['name'];
+    $tempname = $_FILES['photo']['tmp_name'];
+    $folder = 'uploads/'. $filename;
+    move_uploaded_file($tempname, $folder);
+
+
+    $query = "INSERT INTO posts(title,category_id,user_id,status,details,photo) VALUES ('$title','$category','$user_id','$status','$details','$folder')";
     $insert = $db->insert($query);
 
     if ($insert) {
         echo "<div class='alert alert-success' role='alert'>
-          Category Insert Successfully
+          Post Insert Successfully
         </div>";
 
         ?>
         <script>
             setTimeout(function(){
-                window.location.href = "category_list.php";
+                window.location.href = "post_list.php";
             },2000);
         </script>
    <?php } else{
         echo "<div class='alert alert-danger' role='alert'>
-          Category Insert Fail!
+          Post Insert Fail!
         </div>";
    }
      
@@ -55,7 +69,7 @@
                       <h5 class="mb-0">Add Post</h5>
                     </div>
                     <div class="card-body">
-                      <form method="POST">
+                      <form method="POST" enctype='multipart/form-data'>
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="title">Post Title</label>
                           <div class="col-sm-10">
@@ -83,21 +97,21 @@
                         <div class="row mb-3">
                           <label class="col-sm-2 col-form-label" for="photo">Photo</label>
                           <div class="col-sm-10">
-                            <input type="file" name="title" class="form-control" id="photo" />
+                            <input type="file" name="photo" class="form-control" id="photo" />
                           </div>
                         </div>
 
 
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="details">Photo</label>
+                          <label class="col-sm-2 col-form-label" for="details">Post Details</label>
                           <div class="col-sm-10">
-                            <textarea name="details" id="details" cols="30" rows="10"></textarea>
+                            <textarea name="details" id="details" class="form-control" cols="30" rows="10"></textarea>
                           </div>
                         </div>
 
 
                         <div class="row mb-3">
-                          <label class="col-sm-2 col-form-label" for="status">Message</label>
+                          <label class="col-sm-2 col-form-label" for="status">Status</label>
                           <div class="col-sm-10">
                             <select name="status" id="status" class="form-control">
                                 <option value="1"> Active</option>
@@ -108,7 +122,7 @@
 
                         <div class="row justify-content-end">
                           <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary">Insert</button>
+                            <button type="submit" class="btn btn-primary">Post</button>
                           </div>
                         </div>
                       </form>
