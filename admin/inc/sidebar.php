@@ -70,8 +70,8 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-item active">
-              <a href="index.html" class="menu-link">
+            <li class="menu-item <?php if($pagename == 'dashboard') {echo 'active';} ?>">
+              <a href="dashboard.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
               </a>
@@ -79,19 +79,19 @@
 
 
             <!-- Categories -->
-            <li class="menu-item">
+            <li class="menu-item <?php if($pagename == 'add_category' OR $pagename == 'category_list' ) {echo 'active open';} ?> ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Categories</div>
               </a>
 
               <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item <?php if($pagename == 'add_category') {echo 'active';} ?> ">
                   <a href="add_category.php" class="menu-link">
                     <div data-i18n="Without menu">Add Category</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php if( $pagename == 'category_list' ) {echo 'active';} ?> ">
                   <a href="category_list.php" class="menu-link">
                     <div data-i18n="Without navbar">Manage Category</div>
                   </a>
@@ -101,19 +101,19 @@
 
             <!-- Posts -->
 
-            <li class="menu-item">
+            <li class="menu-item <?php if($pagename == 'add_post' OR $pagename == 'post_list' ) {echo 'active open';} ?> ">
               <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-layout"></i>
                 <div data-i18n="Layouts">Posts</div>
               </a>
 
-              <ul class="menu-sub">
+              <ul class="menu-sub <?php if( $pagename == 'add_post' ) {echo 'active';} ?>">
                 <li class="menu-item">
                   <a href="add_post.php" class="menu-link">
                     <div data-i18n="Without menu">Add Post</div>
                   </a>
                 </li>
-                <li class="menu-item">
+                <li class="menu-item <?php if( $pagename == 'post_list' ) {echo 'active';} ?>">
                   <a href="post_list.php" class="menu-link">
                     <div data-i18n="Without navbar">Manage Posts</div>
                   </a>

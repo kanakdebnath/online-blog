@@ -1,5 +1,10 @@
 <?php 
 
+$actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+//Show filename, but cut off file extension for ".php" files
+$pagename =  basename($actual_link,".php");
+
 include_once('../lib/session.php');
 include_once('../lib/database.php');
 
