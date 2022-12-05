@@ -45,7 +45,7 @@ $posts = $db->select($query);
               <div class="card">
                 <h5 class="card-header">Post List</h5>
                 <div class="table-responsive text-nowrap">
-                  <table class="table">
+                  <table class="table" id="example">
                     <thead>
                       <tr class="text-nowrap">
                         <th>#</th>
@@ -71,6 +71,7 @@ $posts = $db->select($query);
                                         <td><?php echo $result['title']; ?></td>
 
                                         <?php 
+                                        $cate_name = '';
                                         $cate_id = $result['category_id'];
 
                                         $query = "SELECT * FROM categories WHERE id = $cate_id  ORDER BY id DESC";
@@ -102,7 +103,7 @@ $posts = $db->select($query);
                                             </td>
                                         <td><?php echo $result['created_at']; ?></td>
                                         <td>
-                                            <span  class="badge bg-info"><a href="edit_post.php?id=<?php echo $result['id'] ?>">Edit</a></span> ||
+                                            <span  class="badge bg-info"><a href="edit_post.php?id=<?php echo base64_encode($result['id']) ?>">Edit</a></span> ||
 
                                             <span  class="badge bg-danger"><a onClick=" return confirm('Are your sure you want to delete?')" href="?delid=<?php echo $result['id'] ?>">Delete</a></span>
 

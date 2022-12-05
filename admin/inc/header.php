@@ -61,6 +61,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
     <!-- Page CSS -->
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css">
+
     <!-- Helpers -->
     <script src="assets/vendor/js/helpers.js"></script>
     <script src="assets/js/config.js"></script>

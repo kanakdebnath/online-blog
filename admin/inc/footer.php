@@ -47,8 +47,15 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
+    <script type="text/javascript" src='https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js'></script>
+    <script type="text/javascript" src='https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js'></script>
+
     <script>
             CKEDITOR.replace( 'details' );
+
+            $(document).ready(function () {
+                $('#example').DataTable();
+            });
     </script>
   </body>
 </html>
