@@ -1,3 +1,13 @@
+<?php 
+
+include_once('lib/session.php');
+include_once('lib/database.php');
+
+$db = new Database();
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,13 +35,13 @@
   <body>
 
     <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
+   <!--  <div id="preloader">
         <div class="jumper">
             <div></div>
             <div></div>
             <div></div>
         </div>
-    </div>  
+    </div>   -->
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->

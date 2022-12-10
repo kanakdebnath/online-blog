@@ -1,5 +1,20 @@
 <?php
   include_once('inc/header.php');
+
+  if ($_GET['id']) {
+
+  $id = base64_decode($_GET['id']);
+
+  $query = "SELECT posts.*, categories.* FROM posts
+          INNER JOIN categories ON posts.category_id = categories.id WHERE posts.id = $id";    
+
+  $posts = $db->select($query);
+  
+
+
+
+}
+
 ?>
 
     <!-- Page Content -->
@@ -19,29 +34,6 @@
       </section>
     </div>
     
-    <!-- Banner Ends Here -->
-
-    <section class="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="main-content">
-              <div class="row">
-                <div class="col-lg-8">
-                  <span>Stand Blog HTML5 Template</span>
-                  <h4>Creative HTML Template For Bloggers!</h4>
-                </div>
-                <div class="col-lg-4">
-                  <div class="main-button">
-                    <a rel="nofollow" href="https://templatemo.com/tm-551-stand-blog" target="_parent">Download Now!</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
 
     <section class="blog-posts grid-system">
@@ -52,15 +44,28 @@
               <div class="row">
                 <div class="col-lg-12">
                   <div class="blog-post">
+
+                    <?php 
+                            if ($posts) {
+                                while($result = $posts->fetch_assoc() ){ 
+                                        
+                                    ?>
+
+
                     <div class="blog-thumb">
-                      <img src="assets/images/blog-post-02.jpg" alt="">
+                      <img src="admin/<?php echo $result['photo']; ?>" alt="">
                     </div>
                     <div class="down-content">
-                      <span>Lifestyle</span>
-                      <a href="post-details.html"><h4>Aenean pulvinar gravida sem nec</h4></a>
+                      <span><?php echo $result['name']; ?></span>
+                      <a href="post-details.php?id=<?php echo base64_encode($result['id']) ?>"><h4><?php echo $result['title']; ?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
-                        <li><a href="#">May 12, 2020</a></li>
+                        <li><a href="#">
+                          <?php
+                              $date=date_create($result['created_at']);
+                              echo date_format($date,"d M,Y");
+                            ?>
+                        </a></li>
                         <li><a href="#">10 Comments</a></li>
                       </ul>
                       <p>You can browse different tags such as <a rel="nofollow" href="https://templatemo.com/tag/multi-page" target="_parent">multi-page</a>, <a rel="nofollow" href="https://templatemo.com/tag/resume" target="_parent">resume</a>, <a rel="nofollow" href="https://templatemo.com/tag/video" target="_parent">video</a>, etc. to see more CSS templates. Sed hendrerit rutrum arcu, non malesuada nisi. Sed id facilisis turpis. Donec justo elit, dapibus vel ultricies in, molestie sit amet risus. In nunc augue, rhoncus sed libero et, tincidunt tempor nisl. Donec egestas, quam eu rutrum ultrices, sapien ante posuere nisl, ac eleifend eros orci vel ante. Pellentesque vitae eleifend velit. Etiam blandit felis sollicitudin vestibulum feugiat.
@@ -84,6 +89,7 @@
                         </div>
                       </div>
                     </div>
+                    <?php } } ?>
                   </div>
                 </div>
                 <div class="col-lg-12">
