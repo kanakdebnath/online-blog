@@ -5,13 +5,9 @@
 
   $id = base64_decode($_GET['id']);
 
-  $query = "SELECT posts.*, categories.* FROM posts
-          INNER JOIN categories ON posts.category_id = categories.id WHERE posts.id = $id";    
-
+  $query = "SELECT *, posts.id as pid, categories.id as cid FROM posts
+          INNER JOIN categories ON posts.category_id = categories.id where posts.id = '$id' ";
   $posts = $db->select($query);
-  
-
-
 
 }
 
@@ -57,7 +53,7 @@
                     </div>
                     <div class="down-content">
                       <span><?php echo $result['name']; ?></span>
-                      <a href="post-details.php?id=<?php echo base64_encode($result['id']) ?>"><h4><?php echo $result['title']; ?></h4></a>
+                      <a href="post-details.php?id=<?php echo base64_encode($result['pid']) ?>"><h4><?php echo $result['title']; ?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">
@@ -180,77 +176,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="sidebar">
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="sidebar-item search">
-                    <form id="search_form" name="gs" method="GET" action="#">
-                      <input type="text" name="q" class="searchText" placeholder="type to search..." autocomplete="on">
-                    </form>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="sidebar-item recent-posts">
-                    <div class="sidebar-heading">
-                      <h2>Recent Posts</h2>
-                    </div>
-                    <div class="content">
-                      <ul>
-                        <li><a href="post-details.php">
-                          <h5>Vestibulum id turpis porttitor sapien facilisis scelerisque</h5>
-                          <span>May 31, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.php">
-                          <h5>Suspendisse et metus nec libero ultrices varius eget in risus</h5>
-                          <span>May 28, 2020</span>
-                        </a></li>
-                        <li><a href="post-details.php">
-                          <h5>Swag hella echo park leggings, shaman cornhole ethical coloring</h5>
-                          <span>May 14, 2020</span>
-                        </a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="sidebar-item categories">
-                    <div class="sidebar-heading">
-                      <h2>Categories</h2>
-                    </div>
-                    <div class="content">
-                      <ul>
-                        <li><a href="#">- Nature Lifestyle</a></li>
-                        <li><a href="#">- Awesome Layouts</a></li>
-                        <li><a href="#">- Creative Ideas</a></li>
-                        <li><a href="#">- Responsive Templates</a></li>
-                        <li><a href="#">- HTML5 / CSS3 Templates</a></li>
-                        <li><a href="#">- Creative &amp; Unique</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-12">
-                  <div class="sidebar-item tags">
-                    <div class="sidebar-heading">
-                      <h2>Tag Clouds</h2>
-                    </div>
-                    <div class="content">
-                      <ul>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Creative</a></li>
-                        <li><a href="#">HTML5</a></li>
-                        <li><a href="#">Inspiration</a></li>
-                        <li><a href="#">Motivation</a></li>
-                        <li><a href="#">PSD</a></li>
-                        <li><a href="#">Responsive</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <?php  include_once('inc/sidebar.php'); ?>
         </div>
       </div>
     </section>

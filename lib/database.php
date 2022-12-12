@@ -57,7 +57,6 @@ class Database {
 
 	public function select($data){
 		$select = $this->connection->query($data);
-
 		if($select->num_rows > 0){
 			return $select;
 		}else{

@@ -1,10 +1,21 @@
 <?php
   include_once('inc/header.php');
 
-  // slider post 
-$query = "SELECT *, posts.id as pid, categories.id as cid FROM posts
-          INNER JOIN categories ON posts.category_id = categories.id ORDER BY posts.id DESC LIMIT 6";
-$posts = $db->select($query);
+
+  if ($_GET['cid']) {
+
+  $id = base64_decode($_GET['cid']);
+
+  $query = "SELECT *, posts.id as pid, categories.id as cid FROM posts
+          INNER JOIN categories ON posts.category_id = categories.id where posts.category_id = '$id' ";
+  $posts = $db->select($query);
+
+
+  $query = "SELECT * FROM categories WHERE id = $id";
+  $categorie = $db->select($query);
+
+}
+
 
 
 ?>
@@ -17,8 +28,11 @@ $posts = $db->select($query);
           <div class="row">
             <div class="col-lg-12">
               <div class="text-content">
-                <h4>Recent Posts</h4>
-                <h2>Our Recent Blog Entries</h2>
+                <h4>Category Posts</h4>
+                <?php foreach ($categorie as $value): ?>
+                  <h2><?php echo $value['name'] ?></h2>
+                  
+                <?php endforeach ?>
               </div>
             </div>
           </div>
@@ -77,12 +91,10 @@ $posts = $db->select($query);
                     </div>
                   </div>
                 </div>
+
+
                      
-               <?php  }  } ?>
-
-                
-
-
+               <?php  } ?>
 
                 <div class="col-lg-12">
                   <ul class="page-numbers">
@@ -92,6 +104,20 @@ $posts = $db->select($query);
                     <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
                   </ul>
                 </div>
+
+               <?php  }else{ ?>
+
+                <h2 class="text-danger text-center">This Category Hasen't Any Posts</h2>
+
+              <?php  }
+
+                ?>
+
+                
+
+
+
+                
               </div>
             </div>
           </div>
