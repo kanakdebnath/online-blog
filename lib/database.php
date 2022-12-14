@@ -2,10 +2,10 @@
 
 class Database {
 
-	public $host = 'localhost';
-	public $user = 'root';
-	public $pass = '';
-	public $database = 'online_php_class';
+	public $host   = DB_HOST;
+	public $user   = DB_USER;
+	public $pass   = DB_PASS;
+	public $database = DB_NAME;
 
 	public $connection;
 	public $error;

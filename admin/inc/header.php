@@ -7,10 +7,12 @@ $pagename =  basename($actual_link,".php");
 
 include_once('../lib/session.php');
 include_once('../lib/database.php');
+include_once('../lib/Helper.php');
 
 Session::checkSession();
 
 $db = new Database();
+$hp = new Helper();
 
 
 if (isset($_GET['action']) && $_GET['action'] == 'logout') {

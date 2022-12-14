@@ -17,7 +17,7 @@
     $details = $_POST['details'];
     $status = $_POST['status'];
     $user_id = Session::get('userId');
-
+    $slug = $hp->slug($title);
 
     // phpto upload 
 
@@ -27,7 +27,7 @@
     move_uploaded_file($tempname, $folder);
 
 
-    $query = "INSERT INTO posts(title,category_id,user_id,status,details,photo) VALUES ('$title','$category','$user_id','$status','$details','$folder')";
+    $query = "INSERT INTO posts(title,category_id,user_id,status,details,photo,slug) VALUES ('$title','$category','$user_id','$status','$details','$folder','$slug')";
     $insert = $db->insert($query);
 
     if ($insert) {
