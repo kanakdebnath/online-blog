@@ -1,5 +1,5 @@
 <?php 
-
+  include_once("../lib/config.php");
 	include_once('../lib/session.php');
 	include_once('../lib/database.php');
 

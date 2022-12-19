@@ -1,12 +1,12 @@
 <?php
   include_once('inc/header.php');
 
-  if ($_GET['id']) {
+  if ($_GET['slug']) {
 
-  $id = base64_decode($_GET['id']);
+  $slug = $_GET['slug'];
 
   $query = "SELECT *, posts.id as pid, categories.id as cid FROM posts
-          INNER JOIN categories ON posts.category_id = categories.id where posts.id = '$id' ";
+          INNER JOIN categories ON posts.category_id = categories.id where posts.slug = '$slug' ";
   $posts = $db->select($query);
 
 }
@@ -53,7 +53,7 @@
                     </div>
                     <div class="down-content">
                       <span><?php echo $result['name']; ?></span>
-                      <a href="post-details.php?id=<?php echo base64_encode($result['pid']) ?>"><h4><?php echo $result['title']; ?></h4></a>
+                      <a href="post-details.php?slug=<?php echo $result['slug'] ?>"><h4><?php echo $result['title']; ?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">
@@ -64,8 +64,9 @@
                         </a></li>
                         <li><a href="#">10 Comments</a></li>
                       </ul>
-                      <p>You can browse different tags such as <a rel="nofollow" href="https://templatemo.com/tag/multi-page" target="_parent">multi-page</a>, <a rel="nofollow" href="https://templatemo.com/tag/resume" target="_parent">resume</a>, <a rel="nofollow" href="https://templatemo.com/tag/video" target="_parent">video</a>, etc. to see more CSS templates. Sed hendrerit rutrum arcu, non malesuada nisi. Sed id facilisis turpis. Donec justo elit, dapibus vel ultricies in, molestie sit amet risus. In nunc augue, rhoncus sed libero et, tincidunt tempor nisl. Donec egestas, quam eu rutrum ultrices, sapien ante posuere nisl, ac eleifend eros orci vel ante. Pellentesque vitae eleifend velit. Etiam blandit felis sollicitudin vestibulum feugiat.
-                      <br><br>Donec tincidunt leo nec magna gravida varius. Suspendisse felis orci, egestas ac sodales quis, venenatis et neque. Vivamus facilisis dignissim arcu et blandit. Maecenas finibus dui non pulvinar lacinia. Ut lacinia finibus lorem vel porttitor. Suspendisse et metus nec libero ultrices varius eget in risus. Cras id nibh at erat pulvinar malesuada et non ipsum. Suspendisse id ipsum leo.</p>
+                      <div>
+                        <?php echo $result['details']; ?>
+                      </div>
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">

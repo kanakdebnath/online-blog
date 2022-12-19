@@ -64,7 +64,7 @@
                       <a href="category-post.php?cid=<?php echo base64_encode($result['cid']) ?>">
                         <span><?php echo $result['name']; ?></span>
                       </a> 
-                      <a href="post-details.php?id=<?php echo base64_encode($result['pid']) ?>"><h4><?php echo $result['title']; ?></h4></a>
+                      <a href="post-details.php?slug=<?php echo $result['slug'] ?>"><h4><?php echo $result['title']; ?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">

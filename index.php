@@ -37,7 +37,7 @@ $posts1 = $db->select($query1);
                           <?php echo $result['name']; ?>
                         </a></span>
                       </div>
-                      <a href="post-details.php?id=<?php echo base64_encode($result['pid']) ?>"><h4><?php echo $result['title']; ?></h4></a>
+                      <a href="post-details.php?slug=<?php echo $result['slug'] ?>"><h4><?php echo $result['title']; ?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">
@@ -80,7 +80,7 @@ $posts1 = $db->select($query1);
                     </div>
                     <div class="down-content">
                       <span><a href="category-post.php?cid=<?php echo base64_encode($result1['cid']) ?>"><?php echo $result1['name']; ?></a></span>
-                      <a href="post-details.php?id=<?php echo base64_encode($result1['pid']) ?>"><h4><?php echo $result1['title']; ?></h4></a>
+                      <a href="post-details.php?slug=<?php echo $result1['slug'] ?>"><h4><?php echo $result1['title']; ?></h4></a>
                       <ul class="post-info">
                         <li><a href="#">Admin</a></li>
                         <li><a href="#">

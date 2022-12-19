@@ -27,6 +27,8 @@ public function title(){
 		}
 		return $title = ucwords($title);
 	}
+
+	
 	
 
 

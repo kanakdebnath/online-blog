@@ -5,6 +5,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 //Show filename, but cut off file extension for ".php" files
 $pagename =  basename($actual_link,".php");
 
+include_once('../lib/config.php');
 include_once('../lib/session.php');
 include_once('../lib/database.php');
 include_once('../lib/Helper.php');
@@ -71,6 +72,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
 
     <script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 
+
+    <link rel="stylesheet" href="../assets/css/tags.css" />
     
   </head>
 

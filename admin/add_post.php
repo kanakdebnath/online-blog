@@ -16,6 +16,7 @@
     $category = $_POST['category'];
     $details = $_POST['details'];
     $status = $_POST['status'];
+    $tags = $_POST['tags'];
     $user_id = Session::get('userId');
     $slug = $hp->slug($title);
 
@@ -27,7 +28,7 @@
     move_uploaded_file($tempname, $folder);
 
 
-    $query = "INSERT INTO posts(title,category_id,user_id,status,details,photo,slug) VALUES ('$title','$category','$user_id','$status','$details','$folder','$slug')";
+    $query = "INSERT INTO posts(title,category_id,user_id,status,details,photo,slug,tags) VALUES ('$title','$category','$user_id','$status','$details','$folder','$slug','$tags')";
     $insert = $db->insert($query);
 
     if ($insert) {
@@ -56,6 +57,7 @@
 
             <!-- Content -->
  <!-- Content -->
+
 
             <div class="container-xxl flex-grow-1 container-p-y">
               <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Home/</span> Post</h4>
@@ -106,6 +108,14 @@
                           <label class="col-sm-2 col-form-label" for="details">Post Details</label>
                           <div class="col-sm-10">
                             <textarea name="details" id="details" class="form-control" cols="30" rows="10"></textarea>
+                          </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                          <label class="col-sm-2 col-form-label" for="details">Tags</label>
+                          <div class="col-sm-10">
+                            <input type="text" id="tag-input1" class="form-control" name="tags" value="" data-role="tagsinput">
                           </div>
                         </div>
 

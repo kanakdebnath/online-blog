@@ -1,10 +1,10 @@
  <?php 
 
-    if (isset($_GET['id'])) {
+    if (isset($_GET['slug'])) {
 
-	  $id = base64_decode($_GET['id']);
+	  $slug = $_GET['slug'];
 
-	  $query = "SELECT * FROM posts WHERE id = $id";
+	  $query = "SELECT * FROM posts WHERE slug = '$slug'";
 	  $posts = $db->select($query);
 
 
@@ -16,7 +16,7 @@
 
         <?php } } 
     } else{ ?>
-	<title><?php echo $hp->title(); ?>-<?php echo TITLE; ?></title>
+	<title><?php echo $hp->title(); ?> - <?php echo TITLE; ?></title>
 	<meta name="keywords" content="<?php echo KEYWORDS; ?>">
         <?php } ?>
  

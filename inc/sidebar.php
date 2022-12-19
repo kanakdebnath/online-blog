@@ -36,7 +36,7 @@ $categories = $db->select($query);
                 
                           while($result2 = $recent_posts->fetch_assoc() ){  ?>
 
-                        <li><a href="post-details.php?id=<?php echo base64_encode($result2['pid']) ?>">
+                        <li><a href="post-details.php?slug=<?php echo $result2['slug'] ?>">
                           <h5><?php echo $result2['title']; ?></h5>
                           <span>
 
