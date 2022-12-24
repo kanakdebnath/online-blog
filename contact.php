@@ -35,7 +35,7 @@
                       <h2>Send us a message</h2>
                     </div>
                     <div class="content">
-                      <form id="contact" action="" method="post">
+                      <form id="contact" action="contact_submit.php" method="post">
                         <div class="row">
                           <div class="col-md-6 col-sm-12">
                             <fieldset>
