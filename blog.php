@@ -1,10 +1,35 @@
 <?php
   include_once('inc/header.php');
 
-  // slider post 
+
+    // for pagination 
+
+  $post_per_page = 6;
+      if (isset($_GET["page"])) {
+        $page = $_GET["page"];
+      }else{
+        $page = 1;  
+      }
+  $start_form = ($page-1) * $post_per_page;
+
+
+  // for pagination 
+
+
+
+
 $query = "SELECT *, posts.id as pid, categories.id as cid FROM posts
-          INNER JOIN categories ON posts.category_id = categories.id ORDER BY posts.id DESC LIMIT 6";
+          INNER JOIN categories ON posts.category_id = categories.id ORDER BY posts.id DESC LIMIT $start_form, $post_per_page";
 $posts = $db->select($query);
+
+
+  // All post 
+$query1 = "SELECT *, posts.id as pid, categories.id as cid FROM posts
+          INNER JOIN categories ON posts.category_id = categories.id ORDER BY posts.id DESC";
+$posts1 = $db->select($query1);
+
+$total_rows = mysqli_num_rows($posts1);
+$total_pages = ceil($total_rows/$post_per_page);
 
 
 ?>
@@ -86,10 +111,14 @@ $posts = $db->select($query);
 
                 <div class="col-lg-12">
                   <ul class="page-numbers">
-                    <li><a href="#">1</a></li>
-                    <li class="active"><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i></a></li>
+                    <li><a href="blog.php?page=1"><i class="fa fa-angle-double-left"></i></a></li>
+                    <?php 
+                      for ($i=1; $i <= $total_pages; $i++) { 
+                        echo "<li><a href='blog.php?page=".$i."'>".$i."</a></li>";
+                      }
+
+                     ?>
+                    <li><a href="blog.php?page=<?php echo $total_pages ?>"><i class="fa fa-angle-double-right"></i></a></li>
                   </ul>
                 </div>
               </div>

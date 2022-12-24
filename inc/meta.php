@@ -18,8 +18,8 @@
     } else{ ?>
 	<title><?php echo $hp->title(); ?> - <?php echo TITLE; ?></title>
 	<meta name="keywords" content="<?php echo KEYWORDS; ?>">
+	<meta name="description" content="<?php echo DESCRIPTION; ?>">
         <?php } ?>
  
 <meta name="language" content="English">
-<meta name="description" content="It is a Blog website">
 <meta name="author" content="Kanak">

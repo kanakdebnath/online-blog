@@ -23,7 +23,7 @@ public function title(){
 		if ($title == 'index') {
 			$title = 'Home';
 		}elseif ($title == 'contact'){
-			$title = 'contact';
+			$title = 'Contact';
 		}
 		return $title = ucwords($title);
 	}
